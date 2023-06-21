@@ -1,5 +1,5 @@
 //:D                             >:(
-const User = require('./userModel');
+const User = require('../model/userModel');
 
 async function getUsers(req, res) {
     try {

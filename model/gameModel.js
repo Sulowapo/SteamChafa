@@ -15,6 +15,15 @@ const gameSchema = new Schema({
     }]
 });
 
+function formatCurrency(value) {
+    return value.toFixed(2);
+}
+
+function parseCurrency(value){
+    return parseFloat(value);
+}
+
+
 const Game = mongoose.model('Game', userSchema);
 
 module.exports = Game;

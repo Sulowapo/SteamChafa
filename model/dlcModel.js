@@ -10,6 +10,14 @@ const dlcSchema = new Schema({
     }
 });
 
+function formatCurrency(value) {
+    return value.toFixed(2);
+}
+
+function parseCurrency(value){
+    return parseFloat(value);
+}
+
 const Dlc = mongoose.model('Dlc', dlcSchema);
 
 module.exports = Dlc;
