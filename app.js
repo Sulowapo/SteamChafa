@@ -9,14 +9,12 @@ const app = express();
 app.use(express.json());
 
 // Para users
-app.get('/users', userController.getUsers);
-app.post('/users', userController.createUser);
-app.put('/users/:name', userController.updateUserByName);
-app.delete('/users/:name', userController.deleteUserByName);
+app.use(express.json());
+app.use('/users', userRouter);
 
 //Para admin
 app.get('/admin', adminController.getAdmins);
-app.post('/admin', adminController.createAdmin);
+app.post('/adminp', adminController.createAdmin);
 app.put('/admin/:name', adminController.updateAdminByName);
 app.delete('/admin/:name', adminController.deleteAdminByName);
 
