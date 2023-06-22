@@ -23,7 +23,7 @@ async function updateGameByTitle(req, res) {
   const { title } = req.params;
   const { description, price, genre } = req.body;
   try {
-    const game = await Game.findByIdAndUpdate({title},
+    const game = await Game.findByIdAndUpdate({ title },
       { title, description, price, genre },
       { new: true }
     );
@@ -40,7 +40,7 @@ async function updateGameByTitle(req, res) {
 async function deleteGameByTitle(req, res) {
   const { title } = req.params;
   try {
-    const game = await Game.findByIdAndDelete({title});
+    const game = await Game.findByIdAndDelete({ title });
     if (game) {
       res.json({ message: 'Juego eliminado correctamente' });
     } else {

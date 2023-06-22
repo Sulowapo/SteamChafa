@@ -23,7 +23,7 @@ async function updateGameByTitle(req, res) {
   const { title } = req.params;
   const { description, price } = req.body;
   try {
-    const dlc = await Dlc.findByIdAndUpdate({title},
+    const dlc = await Dlc.findByIdAndUpdate({ title },
       { title, description, price },
       { new: true }
     );
@@ -40,7 +40,7 @@ async function updateGameByTitle(req, res) {
 async function deleteGameByTitle(req, res) {
   const { title } = req.params;
   try {
-    const dlc = await Dlc.findByIdAndDelete({title});
+    const dlc = await Dlc.findByIdAndDelete({ title });
     if (dlc) {
       res.json({ message: 'DLC eliminado correctamente' });
     } else {

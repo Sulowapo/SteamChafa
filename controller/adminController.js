@@ -24,14 +24,14 @@ async function updateAdminByName(req, res) {
     const { email, password, role } = req.body;
     try {
         const admin = await Admin.findOneAndUpdate(
-        { name },
-        { email, password, role },
-        { new: true }
+            { name },
+            { email, password, role },
+            { new: true }
         );
         if (admin) {
-        res.json(admin);
+            res.json(admin);
         } else {
-        res.status(404).json({ error: 'Administrador no encontrado' });
+            res.status(404).json({ error: 'Administrador no encontrado' });
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar el administrador' });
@@ -43,9 +43,9 @@ async function deleteAdminByName(req, res) {
     try {
         const admin = await Admin.findOneAndDelete({ name });
         if (admin) {
-        res.json({ message: 'Administrador eliminado correctamente' });
+            res.json({ message: 'Administrador eliminado correctamente' });
         } else {
-        res.status(404).json({ error: 'Administrador no encontrado' });
+            res.status(404).json({ error: 'Administrador no encontrado' });
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar el administrador' });
@@ -53,8 +53,8 @@ async function deleteAdminByName(req, res) {
 }
 
 module.exports = {
-  getAdmins,
-  createAdmin,
-  updateAdminByName,
-  deleteAdminByName
+    getAdmins,
+    createAdmin,
+    updateAdminByName,
+    deleteAdminByName
 };
