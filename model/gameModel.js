@@ -24,6 +24,6 @@ function parseCurrency(value){
 }
 
 
-const Game = mongoose.model('Game', userSchema);
+const Game = mongoose.model('Game', gameSchema);
 
 module.exports = Game;

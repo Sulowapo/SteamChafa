@@ -2,17 +2,19 @@ const Game = require('../model/gameModel');
 
 async function getGames(req, res) {
   try {
-    const games = await Game.find().populate('dlcs');
-    res.json(games);
+    // .populate('dlcs') ------- Esto va despues del .find() se quita temporalmente porque era necesario que los
+    // juegos tuvieran un dlc si no lo tenian no devolvia ningun juego.
+    const games = await Game.find();
+      res.json(games);
   } catch (error) {
     res.status(500).json({ error: 'Error al obtener los juegos' });
   }
 }
 
 async function createGame(req, res) {
-  const { title, description, price, genre } = req.body;
+  const { title, description, price, genre, dlcs } = req.body;
   try {
-    const game = await Game.create({ title, description, price, genre });
+    const game = await Game.create({ title, description, price, genre, dlcs });
     res.status(201).json(game);
   } catch (error) {
     res.status(500).json({ error: 'Error al crear el juego' });

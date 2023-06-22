@@ -19,7 +19,7 @@ async function createDlc(req, res) {
   }
 }
 
-async function updateGameByTitle(req, res) {
+async function updateDlcByTitle(req, res) {
   const { title } = req.params;
   const { description, price } = req.body;
   try {
@@ -37,7 +37,7 @@ async function updateGameByTitle(req, res) {
   }
 }
 
-async function deleteGameByTitle(req, res) {
+async function deleteDlcByTitle(req, res) {
   const { title } = req.params;
   try {
     const dlc = await Dlc.findByIdAndDelete({ title });
@@ -54,6 +54,6 @@ async function deleteGameByTitle(req, res) {
 module.exports = {
   getDlcs,
   createDlc,
-  updateGameByTitle,
-  deleteGameByTitle
+  updateDlcByTitle,
+  deleteDlcByTitle
 };
