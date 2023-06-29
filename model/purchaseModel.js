@@ -1,19 +1,25 @@
 const { Schema, default: mongoose } = require('mongoose');
 
 const purchaseSchema = new Schema({
-    date: Date,
+    date: {
+        type: Date,
+        required: true
+    },
     games: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Game'
+        ref: 'Game',
+        required: true
     }],
     amount: {
         type: Number,
+        required: true,
         get: formatCurrency,
         set: parseCurrency
     },
     payment: {
         type: String,
-        enum: ['balance', 'debitCard']
+        enum: ['balance', 'debitCard'],
+        required: true
     }
 });
 

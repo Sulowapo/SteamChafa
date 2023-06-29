@@ -1,4 +1,5 @@
 const Purchase = require('../model/purchaseModel');
+const CustomeError = require('../utils/CustomeError');
 
 async function getAllPurchases(req, res) {
     try {
@@ -35,7 +36,8 @@ async function updatePurchaseByName(req, res) {
             { new: true }
         ).populate('games');
         if (!purchase) {
-            return res.status(404).json({ error: 'Compra no encontrada' });
+            const error = new CustomeError('Compra no encontrado', 404);
+            return next(error);
         }
         res.json(purchase);
     } catch (error) {
@@ -48,9 +50,12 @@ async function deletePurchaseByName(req, res) {
     try {
         const purchase = await Purchase.findOneAndDelete({ name });
         if (!purchase) {
-            return res.status(404).json({ error: 'Compra no encontrada' });
+            const error = new CustomeError('Compra no encontrado', 404);
+            return next(error);
+        }else{
+            res.json({ message: 'Usuario eliminado correctamente' });
         }
-        res.sendStatus(204);
+        
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar la compra' });
     }

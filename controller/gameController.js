@@ -1,4 +1,5 @@
 const Game = require('../model/gameModel');
+const CustomeError = require('../utils/CustomeError');
 
 async function getGames(req, res) {
   try {
@@ -32,7 +33,8 @@ async function updateGameByTitle(req, res) {
     if (game) {
       res.json(game);
     } else {
-      res.status(404).json({ error: 'Juego no encontrado' });
+      const error = new CustomeError('Compra no encontrado', 404);
+      return next(error);
     }
   } catch (error) {
     res.status(500).json({ error: 'Error al actualizar el juego' });
@@ -46,7 +48,8 @@ async function deleteGameByTitle(req, res) {
     if (game) {
       res.json({ message: 'Juego eliminado correctamente' });
     } else {
-      res.status(404).json({ error: 'Juego no encontrado' });
+      const error = new CustomeError('Compra no encontrado', 404);
+      return next(error);
     }
   } catch (error) {
     res.status(500).json({ error: 'Error al eliminar el juego' });
