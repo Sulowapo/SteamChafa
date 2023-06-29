@@ -1,14 +1,24 @@
 const { Schema, default: mongoose } = require('mongoose');
 
 const gameSchema = new Schema({
-    title: String,
-    description: String,
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
+        required: true,
         get: formatCurrency,
         set: parseCurrency
     },
-    genre: String,
+    genre: {
+        type: String,
+        required: true
+    },
     dlcs: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Dlc'

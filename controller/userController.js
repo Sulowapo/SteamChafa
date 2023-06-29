@@ -1,6 +1,6 @@
 //:D                             >:(
 const User = require('../model/userModel');
-
+const CustomeError = require('../utils/CustomeError');
 async function getUsers(req, res) {
     try {
         const users = await User.find();
@@ -32,7 +32,8 @@ async function updateUserByName(req, res) {
         if (user) {
             res.json(user);
         } else {
-            res.status(404).json({ error: 'Usuario no encontrado' });
+            const error = new CustomeError('Usuario no encontrado', 404);
+            return next(error);
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar el usuario' });
@@ -46,7 +47,8 @@ async function deleteUserByName(req, res) {
         if (user) {
             res.json({ message: 'Usuario eliminado correctamente' });
         } else {
-            res.status(404).json({ error: 'Usuario no encontrado' });
+            const error = new CustomeError('Usuario no encontrado', 404);
+            return next(error);
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar el usuario' });

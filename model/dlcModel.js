@@ -1,10 +1,17 @@
 const { Schema, default: mongoose } = require('mongoose');
 
 const dlcSchema = new Schema({
-    title: String,
-    description: String,
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
+        required: true,
         get: formatCurrency,
         set: parseCurrency
     }

@@ -1,12 +1,22 @@
 const { Schema, default: mongoose } = require('mongoose');
 
 const adminSchema = new Schema({
-    name: String,
-    email: String,
-    password: String,
+    name: {
+        type: String,
+        required: true
+    },
+    email:{
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     role: {
         type: String,
-        enum: ['manager', 'root']
+        enum: ['manager', 'root'],
+        required: true
     }
 });
 

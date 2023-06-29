@@ -1,6 +1,6 @@
 const Admin = require('../model/adminModel');
 const CustomeError = require('../utils/CustomeError');
-const error = new CustomeError();
+
 
 async function getAdmins(req, res) {
     try {
@@ -14,48 +14,68 @@ async function getAdmins(req, res) {
     }
 }
 
-async function createAdmin(req, res) {
+async function createAdmin(req, res, next) {
     const { name, email, password, role } = req.body;
     try {
-        const admin = await Admin.create({ name, email, password, role });
-        res.status(201).json({
-            status: 201,
-            data: admin
-        });
+        if( name!=undefined && email!=undefined && password!=undefined && role!=undefined ){
+            const admin = await Admin.create({ name, email, password, role });
+            res.status(201).json({
+                status: 201,
+                data: admin
+            });
+        }
+        else{
+            const error = new CustomeError('Faltan parametros', 400);
+            return next(error);
+        }
     } catch (error) {
-        res.status(500).json({ error: 'Error al crear el administrador' });
+        res.status(500).json(error);
     }
 }
 
-async function updateAdminByName(req, res) {
+async function updateAdminByName(req, res, next) {
     const { name } = req.params;
     const { email, password, role } = req.body;
     try {
-        const admin = await Admin.findOneAndUpdate(
-            { name },
-            { email, password, role },
-            { new: true }
-        );
-        if (admin) {
-            res.status(200).json({
-                status: 200,
-                data:admin});
-        } else {
-            res.status(404).json({ error: 'Administrador no encontrado' });
+        if( name!=undefined && email!=undefined && password!=undefined && role!=undefined ){
+            const admin = await Admin.findOneAndUpdate(
+                { name },
+                { email, password, role },
+                { new: true }
+            );
+            if (admin) {
+                res.status(200).json({
+                    status: 200,
+                    data:admin});
+            } else {
+                const error = new CustomeError('Administrador no encontrado', 404);
+                return next(error);
+            }
+        }
+        else{
+            const error = new CustomeError('Faltan parametros', 400);
+            return next(error);
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar el administrador' });
     }
 }
 
-async function deleteAdminByName(req, res) {
+async function deleteAdminByName(req, res, next) {
     const { name } = req.params;
     try {
-        const admin = await Admin.findOneAndDelete({ name });
-        if (admin) {
-            res.status(200).json({ status: 200, message: 'Administrador eliminado correctamente' });
-        } else {
-            res.status(404).json({ error: 'Administrador no encontrado' });
+        if(name != undefined){
+            const admin = await Admin.findOneAndDelete({ name });
+            if (admin) {
+                res.status(200).json({ status: 200, message: 'Administrador eliminado correctamente' });
+            } else {
+                const error = new CustomeError('Administrador no encontrado', 404);
+                return next(error);
+            }
+        }
+        else{
+            const error = new CustomeError('Faltan parametros', 400);
+            return next(error);
         }
     } catch (error) {
         res.status(500).json({ error: 'Error al eliminar el administrador' });
