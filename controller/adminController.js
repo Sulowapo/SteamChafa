@@ -1,9 +1,14 @@
 const Admin = require('../model/adminModel');
+const CustomeError = require('../utils/CustomeError');
+const error = new CustomeError();
 
 async function getAdmins(req, res) {
     try {
         const admins = await Admin.find();
-        res.json(admins);
+        res.status(200).json({
+            status: 200,
+            data: admins
+        });
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener los administradores' });
     }
@@ -13,7 +18,10 @@ async function createAdmin(req, res) {
     const { name, email, password, role } = req.body;
     try {
         const admin = await Admin.create({ name, email, password, role });
-        res.status(201).json(admin);
+        res.status(201).json({
+            status: 201,
+            data: admin
+        });
     } catch (error) {
         res.status(500).json({ error: 'Error al crear el administrador' });
     }
@@ -29,7 +37,9 @@ async function updateAdminByName(req, res) {
             { new: true }
         );
         if (admin) {
-            res.json(admin);
+            res.status(200).json({
+                status: 200,
+                data:admin});
         } else {
             res.status(404).json({ error: 'Administrador no encontrado' });
         }
@@ -43,7 +53,7 @@ async function deleteAdminByName(req, res) {
     try {
         const admin = await Admin.findOneAndDelete({ name });
         if (admin) {
-            res.json({ message: 'Administrador eliminado correctamente' });
+            res.status(200).json({ status: 200, message: 'Administrador eliminado correctamente' });
         } else {
             res.status(404).json({ error: 'Administrador no encontrado' });
         }
