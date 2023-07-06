@@ -21,6 +21,6 @@ routes(app);
 // Manejador de errores
 app.use(globalErrorHandler);
 
-app.listen(3000, () => {
-    console.log('Aplicación corriendo en el puerto 3000');
+app.listen(4000, () => {
+    console.log('Aplicación corriendo en el puerto 4000');
 });
