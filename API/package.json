@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.0",
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "steamchafa",
+  "description": "Proyecto Temas Emergentes de Aplicaciones Web",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sulowapo/SteamChafa.git"
+  },
+  "author": "Joaquin Castro, River Torres, Saul Reyna, Alexandra Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sulowapo/SteamChafa/issues"
+  },
+  "homepage": "https://github.com/Sulowapo/SteamChafa#readme"
+}
