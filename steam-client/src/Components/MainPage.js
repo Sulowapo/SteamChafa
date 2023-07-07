@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import "../Assets/CSS/mainPage.css";
 import { useLocation } from 'react-router-dom';
 
 function MainPage() {
@@ -8,7 +9,13 @@ function MainPage() {
     console.log(state.userData.email);
 
     return (
-        <div></div>
+        <div id="menu">
+        <ul>
+          <li><a href="#">Tienda</a></li>
+          <li><a href="#">Biblioteca</a></li>
+        </ul>
+      </div>
+    
     );
 }
 
