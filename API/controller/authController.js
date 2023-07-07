@@ -40,18 +40,19 @@ const login = async (req, res) => {
         console.log(JSON.stringify(user));
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        console.log(isPasswordValid)
+        console.log(isPasswordValid);
         if (!isPasswordValid) {
             return res.status(401).json({ error: 'Credenciales inválidas' });
         }
 
         const token = jwt.sign(
-            { user: user._id, email: user.email },
+            { user: user._id, email: user.email},
             'SECRET',
             { expiresIn: '1h' }
         );
 
-        res.json({ email, token });
+        const name = user.name;
+        res.json({ name, email, token });
     } catch (error) {
         console.log(error)
         res.status(500).json({ error: 'Error al iniciar sesión' });
