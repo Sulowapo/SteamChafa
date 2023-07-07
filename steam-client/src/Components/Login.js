@@ -19,7 +19,7 @@ function Login() {
             document.getElementById('avisoPassword').style.visibility = 'visible';
         }
         else {
-            fetch('localhost:4000/login', {
+            fetch('http://localhost:4000/login', {
                 headers: {
                     "Content-Type":"application/json",
                 },
@@ -29,7 +29,10 @@ function Login() {
                     "password": password.value
                 })
             })
-                .then()
+                .then(response => response.json())
+                .then(data =>{
+                    console.log(data)
+                })
                 .catch(err => {
                     alert('ocurrio un error al iniciar sesión, intentelo más tarde.');
                 })
