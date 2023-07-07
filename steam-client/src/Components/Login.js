@@ -1,8 +1,10 @@
 import logo from "../Assets/Images/steam-logo.png";
 import "../Assets/CSS/login.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
+
+    const navigate = useNavigate();
 
     const iniciarSesion = () => {
         let email = document.getElementById('inicio_email');
@@ -25,15 +27,16 @@ function Login() {
                 },
                 method: 'post',
                 body: JSON.stringify({
-                    "email": email.value,
-                    "password": password.value
+                    email: email.value,
+                    password: password.value
                 })
             })
                 .then(response => response.json())
                 .then(data =>{
                     //Mandar json
                     console.log(data);
-                    window.location.href("/mainPage");
+                    navigate('/mainPage', { state: {userData : data}});
+                    //window.location.href("/mainPage");
                 })
                 .catch(err => {
                     alert('ocurrio un error al iniciar sesión, intentelo más tarde.');
