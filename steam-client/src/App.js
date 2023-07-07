@@ -7,20 +7,9 @@ function App() {
     
     <Router>
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Inicio de sesión</Link>
-          </li>
-          <li>
-            <Link to="/registro">Registro</Link>
-          </li>
-        </ul>
-      </nav>
-
       <Routes>
       <Route path="/registro" Component={Register}/>
-      <Route path="/login" Component={Login}/>
+      <Route path="/" Component={Login}/>
     </Routes>
     </div>
   </Router>

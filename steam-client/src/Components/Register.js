@@ -9,35 +9,43 @@ function Register() {
         let email = document.getElementById('registro_email');
         let password = document.getElementById('registro_password');
         let passwordConfirm = document.getElementById('registro_passwordConfirm');
+        //validation
         if(user.value === ''){
             document.getElementById('avisoUser').style.visibility = 'visible';
-        }
-        if (email.value === '') {
+        } else { document.getElementById('avisoUser').style.visibility = 'hidden'; }
+        if(email.value === ''){
             document.getElementById('avisoEmail').style.visibility = 'visible';
-            if (password.value === '') {
-                document.getElementById('avisoPassword').style.visibility = 'visible';
-            } else {
-                document.getElementById('avisoPassword').style.visibility = 'hidden';
-            }
-        } else if (password.value === '') {
-            document.getElementById('avisoEmail').style.visibility = 'hidden';
+        } else { document.getElementById('avisoEmail').style.visibility = 'hidden'; }
+        if(password.value === ''){
             document.getElementById('avisoPassword').style.visibility = 'visible';
-        }
-        else {
-            fetch('localhost:4000/register', {
+        } else { document.getElementById('avisoPassword').style.visibility = 'hidden'; }
+        if(passwordConfirm.value === ''){
+            let confirm = document.getElementById('avisoPasswordConfirm');
+            confirm.style.visibility = 'visible';
+            confirm.value = 'Ingrese nuevamente la contraseña para continuar';
+        } else {
+        if (password.value !== passwordConfirm.value){
+            let confirm = document.getElementById('avisoPasswordConfirm');
+            confirm.value = 'Las contraseñas no coinciden';
+            confirm.style.visibility = 'visible';}
+        else { document.getElementById('avisoPasswordConfirm').style.visibility = 'hidden'; }}
+        if(user.value !== '' && email.value !== '' && password.value !== '' && passwordConfirm.value !== '' && password.value === passwordConfirm.value) {
+            fetch('http://localhost:4000/register', {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
                 method: 'post',
                 body: JSON.stringify({
-                    "user": email.value,
-                    "email": email.value,
-                    "password": password.value
+                    name: user.value,
+                    email: email.value,
+                    password: password.value,
+                    level: 0
                 })
             })
                 .then()
                 .catch(err => {
-                    alert('ocurrio un error al iniciar sesión, intentelo más tarde.');
+                    alert('ocurrio un error al registrar el usuario, intentelo más tarde.');
+                    alert(err);
                 })
         }
     }
@@ -70,7 +78,7 @@ function Register() {
                         <label>Contraseña</label>
                         <input
                             type="password"
-                            id="registro_contrasenia"
+                            id="registro_password"
                             placeholder="Ingresa una contraseña"
                         />
                         <label class="aviso" id="avisoPassword">Ingrese la contraseña para continuar</label>
@@ -79,15 +87,15 @@ function Register() {
                         <label>Confirmar Contraseña</label>
                         <input
                             type="password"
-                            id="registro_contrasenia"
+                            id="registro_passwordConfirm"
                             placeholder="Repite la contraseña"
                         />
-                        <label class="aviso" id="avisoPasswordConfirm">Ingrese la contraseña para continuar</label>
+                        <label class="aviso" id="avisoPasswordConfirm">Ingrese nuevamente la contraseña para continuar</label>
                     </div>
                     <input type="submit" value="Registrarse"></input>
 
                     <div class="a">
-                        <a>Ya eres miembro?</a> <Link to="/login">Inicia sesión aquí</Link>
+                        <a>Ya eres miembro?</a> <Link to="/">Inicia sesión aquí</Link>
                     </div>
 
 
