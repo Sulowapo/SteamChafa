@@ -1,12 +1,14 @@
 const express = require('express');
 const routes = require('./routes/routes')
 const globalErrorHandler = require('./controller/errorController')
-const app = express();
 const authRoutes = require('./routes/authRoutes')
 const authenticateJWT = require('./middleware/authMiddleware');
+const cors = require('cors')
 
+const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 
 //Ruta publica sin autenticación JWT
