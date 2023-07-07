@@ -101,3 +101,12 @@ body::before {
   padding-top: 10px;
   margin-bottom: -20px;
 }
+
+.campo{
+  padding-bottom: 30px;
+}
+
+.aviso{
+  color:brown;
+  visibility: hidden;
+}
