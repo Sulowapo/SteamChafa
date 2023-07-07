@@ -31,7 +31,9 @@ function Login() {
             })
                 .then(response => response.json())
                 .then(data =>{
-                    console.log(data)
+                    //Mandar json
+                    console.log(data);
+                    window.location.href("/mainPage");
                 })
                 .catch(err => {
                     alert('ocurrio un error al iniciar sesión, intentelo más tarde.');

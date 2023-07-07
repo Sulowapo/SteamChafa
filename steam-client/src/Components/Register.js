@@ -3,7 +3,6 @@ import "../Assets/CSS/login.css";
 import { Link } from 'react-router-dom';
 
 function Register() {
-
     const registrarse = () => {
         let user = document.getElementById('registro_user');
         let email = document.getElementById('registro_email');
@@ -42,7 +41,9 @@ function Register() {
                     level: 0
                 })
             })
-                .then()
+                .then(() => {
+                    window.location.href="/";
+                })
                 .catch(err => {
                     alert('ocurrio un error al registrar el usuario, intentelo más tarde.');
                     alert(err);
@@ -93,7 +94,6 @@ function Register() {
                         <label class="aviso" id="avisoPasswordConfirm">Ingrese nuevamente la contraseña para continuar</label>
                     </div>
                     <input type="submit" value="Registrarse"></input>
-
                     <div class="a">
                         <a>Ya eres miembro?</a> <Link to="/">Inicia sesión aquí</Link>
                     </div>
