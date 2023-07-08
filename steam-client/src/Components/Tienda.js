@@ -39,7 +39,7 @@ function Tienda() {
     return (
 
         <div class="container">
-            <div id="menuT">
+            <div class="menuT">
                 <ul>
                     <li>
                         <a onClick={handleClick}>Inicio</a>

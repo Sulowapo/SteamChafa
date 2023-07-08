@@ -67,7 +67,7 @@ body::before {
     margin-top: 60px;
 }
 
-#menuT {
+.menuT {
     background-color: #1b2838;
     position: absolute;
     color: #ffffff;
@@ -77,13 +77,13 @@ body::before {
     border-radius: 5px;
 }
 
-#menuT ul {
+.menuT ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-#menuT ul li a {
+.menuT ul li a {
     color: #ffffff;
     text-decoration: none;
     display: block;
@@ -92,6 +92,6 @@ body::before {
     transition: background-color 0.3s;
 }
 
-#menuT ul li a:hover {
+.menuT ul li a:hover {
     background-color: #355b8c;
 }

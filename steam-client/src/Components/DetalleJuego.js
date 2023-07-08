@@ -13,7 +13,7 @@ function DetalleJuego() {
     const [game, setGame] = useState("");
 
     const handleClick = () => {
-        navigate("/mainPage", { state: { userData: userData } });
+        navigate("/compra", { state: { userData: userData } });
     };
 
     useEffect(() => {
@@ -40,7 +40,7 @@ function DetalleJuego() {
 
     return (
         <div class="container">
-            <div id="menuT">
+            <div class="menuT">
                 <ul>
                     <li>
                         <a onClick={handleClick}>Inicio</a>
@@ -53,6 +53,8 @@ function DetalleJuego() {
                 <p>Precio: ${game.price}</p>
                 <p>Descripción: {game.description}</p>
                 <p>Género: {game.genre}</p>
+
+                <button class="comprar-btn" onClick={handleClick}>Comprar</button>
             </div>
 
         </div>
