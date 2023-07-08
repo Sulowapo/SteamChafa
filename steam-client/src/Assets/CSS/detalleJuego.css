@@ -29,52 +29,19 @@ body::before {
 
 }
 
-.juegos{
+.juego{
     width: 80%;
-    float: right;
-    margin-right: 100px;
-}
-.game-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    margin-right: 300px;
     width: 800px;
-    height: 200px;
+    height: 500px;
     color: whitesmoke;
     font-size: 2em;
     background-color: rgba(5, 15, 49, 0.795);
     margin: auto;
     margin-bottom: 50px;
+    margin-top: 50px;
+    padding-top: 10px;
 
-}
-
-.game-title {
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 100px;
-    position: absolute;
-}
-
-.game-price {
-    font-size: 18px;
-    margin-top: 30px;
-    color: #72f083;
-    position: absolute;
-}
-
-.game-box:first-child{
-    margin-top: 60px;
-}
-
-#menuT {
-    background-color: #1b2838;
-    position: absolute;
-    color: #ffffff;
-    width: 150px;
-    padding: 10px;
-    margin: 60px auto;
-    border-radius: 5px;
 }
 
 #menuT ul {

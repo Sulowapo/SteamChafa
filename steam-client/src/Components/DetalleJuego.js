@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
-import "../Assets/CSS/tienda.css";
-import { useLocation, useNavigate } from "react-router-dom";
 
-function Tienda() {
+import React, { useEffect, useState } from "react";
+import "../Assets/CSS/detalleJuego.css";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
+function DetalleJuego() {
     const { state } = useLocation();
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const userData = state && state.userData;
 
-    const [games, setGames] = useState([]);
+    const [game, setGame] = useState("");
 
     const handleClick = () => {
         navigate("/mainPage", { state: { userData: userData } });
-    };
-
-    const detalleClick = (id) => {
-        navigate(`/detalleJuego/${id}`, { state: { userData: userData } });
     };
 
     useEffect(() => {
@@ -27,7 +25,11 @@ function Tienda() {
                     },
                 });
                 const data = await response.json();
-                setGames(data);
+
+                const game = data.find((game) => game._id === id);
+                if (game) {
+                    setGame(game);
+                }
             } catch (error) {
                 console.error("Error al obtener los juegos:", error);
             }
@@ -37,7 +39,6 @@ function Tienda() {
     }, [state.userData.token]);
 
     return (
-
         <div class="container">
             <div id="menuT">
                 <ul>
@@ -46,17 +47,16 @@ function Tienda() {
                     </li>
                 </ul>
             </div>
-            <div class="juegos">
-                {games.map((game) => (
-                    <div className="game-box" id={`${game._id}`} onClick={() => detalleClick(game._id)}>
-                        <div className="game-title" >{game.title}</div>
-                        <div className="game-price">${game.price}</div>
-                    </div>
-                ))}
+            <div class="juego">
+                <h1>Detalles del Juego</h1>
+                <p>Título: {game.title}</p>
+                <p>Precio: ${game.price}</p>
+                <p>Descripción: {game.description}</p>
+                <p>Género: {game.genre}</p>
             </div>
+
         </div>
     );
-
 }
 
-export default Tienda;
+export default DetalleJuego;
