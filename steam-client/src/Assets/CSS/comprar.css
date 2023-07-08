@@ -19,16 +19,6 @@ body::before {
     background-size: cover;
 }
 
-.container {
-    position:absolute;
-    width: 100%;
-    min-height: 400px;
-    margin: auto;
-    padding: 15px;
-    text-align: center;
-
-}
-
 .compra{
     width: 80%;
     margin-right: 300px;
@@ -42,23 +32,4 @@ body::before {
     margin-top: 50px;
     padding-top: 200px;
 
-}
-
-#menuT ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-#menuT ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    display: block;
-    padding: 5px;
-    border-radius: 3px;
-    transition: background-color 0.3s;
-}
-
-#menuT ul li a:hover {
-    background-color: #355b8c;
 }

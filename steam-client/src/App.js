@@ -4,6 +4,7 @@ import MainPage from "./Components/MainPage";
 import Tienda from "./Components/Tienda";
 import DetalleJuego from "./Components/DetalleJuego";
 import Compra from "./Components/Comprar";
+import Biblioteca from "./Components/Biblioteca";
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ function App() {
       <Route path="/tienda" Component={Tienda}/>
       <Route path="/detalleJuego/:id" Component={DetalleJuego}/>
       <Route path="/compra" Component={Compra}/>
+      <Route path="/biblioteca" Component={Biblioteca}/>
     </Routes>
     </div>
   </Router>

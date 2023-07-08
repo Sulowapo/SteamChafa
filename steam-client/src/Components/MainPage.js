@@ -14,11 +14,16 @@ function MainPage() {
 
   };
 
+  const handleClickBiblioteca = () => {
+    navigate('/biblioteca', { state: { userData: userData } });
+
+  };
+
   return (
     <div id="menu">
       <ul>
         <li><a onClick={handleClick}>Tienda</a></li>
-        <li><a href="#">Biblioteca</a></li>
+        <li><a  onClick={handleClickBiblioteca}>Biblioteca</a></li>
       </ul>
     </div>
 
