@@ -1,0 +1,69 @@
+/*Documento CSS*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #171a21;
+}
+
+body::before {
+    content: "";
+    filter: blur(5px);
+    background-image: url(../Images/steam.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -0;
+    background-size: cover;
+}
+
+.no-disponible{
+    width: 80%;
+    margin-right: 300px;
+    width: 800px;
+    height: 400px;
+    color: whitesmoke;
+    font-size: 2em;
+    background-color: rgba(5, 15, 49, 0.795);
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding-top: 200px;
+
+}
+
+.juegos{
+    width: 80%;
+    float: right;
+    margin-right: 100px;
+}
+.user-game-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 800px;
+    height: 350px;
+    color: whitesmoke;
+    font-size: 2em;
+    background-color: rgba(5, 15, 49, 0.795);
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.user-game-box:first-child{
+    margin-top: 60px;
+}
+
+
+.menuT {
+    background-color: #1b2838;
+    position: absolute;
+    color: #ffffff;
+    width: 150px;
+    padding: 10px;
+    margin: 60px auto;
+    border-radius: 5px;
+}

@@ -1,0 +1,51 @@
+/*Documento CSS*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #171a21;
+}
+
+body::before {
+    content: "";
+    filter: blur(5px);
+    background-image: url(../Images/steam.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -0;
+    background-size: cover;
+}
+
+.juego{
+    width: 80%;
+    margin-right: 300px;
+    width: 800px;
+    color: whitesmoke;
+    font-size: 2em;
+    background-color: rgba(5, 15, 49, 0.795);
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding-top: 10px;
+
+}
+
+.comprar-btn{
+    background-color: rgba(27,111,12,1);
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    transition: background-color 0.3s;
+}
+
+.comprar-btn:hover{
+    background-color: #70b946;
+}

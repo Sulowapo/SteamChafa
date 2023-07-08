@@ -21,12 +21,12 @@ async function createUser(req, res) {
 }
 
 async function updateUserByName(req, res) {
-    const { name } = req.params;
-    const { email, password, level } = req.body;
+    const { email } = req.params;
+    const { name, password, level, games, friends} = req.body;
     try {
         const user = await User.findOneAndUpdate(
-            { name },
-            { email, password, level },
+            { email },
+            { name, password, level, games, friends},
             { new: true }
         );
         if (user) {
@@ -41,9 +41,9 @@ async function updateUserByName(req, res) {
 }
 
 async function deleteUserByName(req, res) {
-    const { name } = req.params;
+    const { email } = req.params;
     try {
-        const user = await User.findOneAndDelete({ name });
+        const user = await User.findOneAndDelete({ email });
         if (user) {
             res.json({ message: 'Usuario eliminado correctamente' });
         } else {

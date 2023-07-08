@@ -1,42 +1,34 @@
 import React from 'react';
 import "../Assets/CSS/mainPage.css";
-import avatar from "../Assets/Images/avatar.jpg";
-import { useLocation } from 'react-router-dom';
-import { Link, useNavigate } from 'react-router-dom';
+
+import {useLocation, useNavigate } from 'react-router-dom';
 
 function MainPage() {
 
-    const { state } = useLocation();
+  const { state } = useLocation();
+  const navigate = useNavigate();
 
-    const cargarJuegos = () => {
+  const userData = state && state.userData;
 
-    }
+  const handleClick = () => {
+    navigate('/tienda', { state: { userData: userData } });
 
-    return (
-        <div id="mainPage">
-            <div id="cuenta">
-                <ul>
-                    <li class="avatarItem">
-                        <a id="link" > <img class="avatarImage" src={avatar} alt="SteamLogo" /> {state.userData.name}</a>
-                        <ul class="dropdownMenu">
-                            <li><Link to="/">Cerrar sesión</Link></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div id="menu">
-                <ul>
-                    <li><a href="#">Tienda</a></li>
-                    <li><a href="#">Biblioteca</a></li>
-                </ul>
-            </div>
-            <div id="main">
-                <div id="tienda">
+  };
 
-                </div>
-            </div>
-        </div>
-    );
+  const handleClickBiblioteca = () => {
+    navigate('/biblioteca', { state: { userData: userData } });
+
+  };
+
+  return (
+    <div id="menu">
+      <ul>
+        <li><a onClick={handleClick}>Tienda</a></li>
+        <li><a  onClick={handleClickBiblioteca}>Biblioteca</a></li>
+      </ul>
+    </div>
+
+  );
 }
 
 export default MainPage;
