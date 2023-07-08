@@ -7,8 +7,8 @@
 
  router.post('/', userController.createUser);
 
- router.put('/:name', userController.updateUserByName);
+ router.put('/:email', userController.updateUserByName);
 
- router.delete('/:name', userController.deleteUserByName);
+ router.delete('/:email', userController.deleteUserByName);
 
  module.exports = router;
